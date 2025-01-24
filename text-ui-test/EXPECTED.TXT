@@ -1,3 +1,4 @@
+***
  Hello! I'm MariiaChatbot
  What can I do for you?
 ***
@@ -13,7 +14,7 @@
  Now you have 2 tasks in the list.
 ***
 ***
- Wow you have an event, you better prepare well. I've added this task:
+ Woah new event, you better prepare well. I've added this task:
    [E][ ] friend's birthday outing (from: today to: tomorrow)
  Now you have 3 tasks in the list.
 ***
@@ -45,3 +46,17 @@
 1.[T][X] read something
 2.[D][ ] return book (by: today)
 3.[E][ ] friend's birthday outing (from: today to: tomorrow)
+***
+ Sure, I ll remove this task since you are so lazy:
+   [T][X] read something
+ Now you have 2 tasks in the list.
+***
+ Here is your list:
+1.[D][ ] return book (by: today)
+2.[E][ ] friend's birthday outing (from: today to: tomorrow)
+***
+ OOPS!!! The description of a todo cannot be empty.
+***
+***
+ OOPS!!! Bro have no idea what you mean by "bla", please write clearer...
+***
