@@ -1,7 +1,47 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
-
+ Hello! I'm MariiaChatbot
+ What can I do for you?
+***
+ Here is your list:
+***
+ You are a buzy man! (woman!) I've added this task:
+   [T][ ] read something
+ Now you have 1 tasks in the list.
+***
+***
+ Wow deadline, you better rush. I've added this task:
+   [D][ ] return book (by: today)
+ Now you have 2 tasks in the list.
+***
+***
+ Wow you have an event, you better prepare well. I've added this task:
+   [E][ ] friend's birthday outing (from: today to: tomorrow)
+ Now you have 3 tasks in the list.
+***
+ Here is your list:
+1.[T][ ] read something
+2.[D][ ] return book (by: today)
+3.[E][ ] friend's birthday outing (from: today to: tomorrow)
+***
+ Nice! I've marked this task as done, good job:
+   [T][X] read something
+***
+ Here is your list:
+1.[T][X] read something
+2.[D][ ] return book (by: today)
+3.[E][ ] friend's birthday outing (from: today to: tomorrow)
+***
+ Nice! I've marked this task as done, good job:
+   [D][X] return book (by: today)
+***
+ Here is your list:
+1.[T][X] read something
+2.[D][X] return book (by: today)
+3.[E][ ] friend's birthday outing (from: today to: tomorrow)
+***
+ OK, I've marked this task as not done yet, i hope you dont lie about finishing your work anymore:
+   [D][ ] return book (by: today)
+***
+ Here is your list:
+1.[T][X] read something
+2.[D][ ] return book (by: today)
+3.[E][ ] friend's birthday outing (from: today to: tomorrow)

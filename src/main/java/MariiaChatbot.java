@@ -11,7 +11,7 @@ public class MariiaChatbot {
         System.out.println(" What can I do for you?");
         System.out.println("***");
 
-        while (true) {
+        while (scanner.hasNextLine()) {
             String input = scanner.nextLine();
             
             if (input.equals("bye")) {
@@ -78,9 +78,5 @@ public class MariiaChatbot {
         }
         
         scanner.close();
-
-
-        System.out.println(" Bye. Hope to see you again soon!");
-        System.out.println("____________________________________________________________");
     }
 }
