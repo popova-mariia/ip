@@ -1,3 +1,4 @@
+
 public abstract class Task {
     String description;
     boolean isDone;
@@ -7,13 +8,13 @@ public abstract class Task {
         this.isDone = false;
     }
 
-    void markAsDone() {
+    public void markAsDone() {
         this.isDone = true;
     }
     public abstract String getType();
 
 
-    void markAsNotDone() {
+    public void markAsNotDone() {
         this.isDone = false;
     }
 
