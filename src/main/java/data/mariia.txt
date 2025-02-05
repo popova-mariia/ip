@@ -1,2 +1,3 @@
-[D][ ] return book (by: Sunday))
-[T][ ] borrow book
+todo party /from 6 /to 7pm /done X
+todo alot of shit /done N
+todo assignment /by Friday /done N

@@ -1,4 +1,6 @@
-
+/**
+ * Subclass of task which has  description, and duration (from when and to when the task will last).
+ */
 public class Event extends Task {
     private String from;
     private String to;
@@ -7,6 +9,14 @@ public class Event extends Task {
         super(description);
         this.from = from;
         this.to = to;
+    }
+
+    public String getFrom() {
+        return this.from;
+    }
+
+    public String getTo() {
+        return this.to;
     }
 
     @Override
