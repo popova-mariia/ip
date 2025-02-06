@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 import java.util.List;
 import java.util.Scanner;
 /**
@@ -31,15 +33,16 @@ public class MariiaChatbot {
         System.out.println(" What can I do for you?");
         System.out.println("***");
 
-        try (Scanner scanner = new Scanner(System.in)) {
-            while (scanner.hasNextLine()) {
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNextLine()) {
+            try {
                 String input = scanner.nextLine();
                 if (input.equals("bye")) {
                     HardDisk.saveTasks(tasks);
                     System.out.println("Tasks successfully saved to hard disk.");
                     System.out.println(" Bye. Hope to never see you again!");
                     break;
-                } else if (input.equals("list")) {
+                } else if (input.startsWith("list")) {
                     System.out.println(" Here is your list:");
                     for (int i = 0; i < tasks.size(); i++) {
                         System.out.println((i + 1) + "." + tasks.get(i));
@@ -47,41 +50,49 @@ public class MariiaChatbot {
                 } else if(input.startsWith("todo")) {
                     String description = input.length() > 5 ? input.substring(5).trim() : "";
 
-                    if (description.isEmpty()) {
-                        throw new EmptyDescriptionException("The description of a todo cannot be empty.");
+                    if (!description.isEmpty()) {
+                        tasks.add(new ToDo(description));
+                        HardDisk.saveTasks(tasks);
+    
+                        System.out.println("***");
+                        System.out.println(" You are a buzy man! (woman!) I've added this task:");
+                        System.out.println("   " + tasks.get(tasks.size() - 1).toString());
+                        System.out.println(" Now you have " + tasks.size() + " tasks in the list.");
+                        System.out.println("***");
+                    } else {
+                        System.out.println("The description is definitely missing");
                     }
-
-                    tasks.add(new ToDo(description));
-                    HardDisk.saveTasks(tasks);
-
-                    System.out.println("***");
-                    System.out.println(" You are a buzy man! (woman!) I've added this task:");
-                    System.out.println("   " + tasks.get(tasks.size() - 1).toString());
-                    System.out.println(" Now you have " + tasks.size() + " tasks in the list.");
-                    System.out.println("***");
 
                 } else if (input.startsWith("deadline")) {
                     String[] parts = input.length() > 9 ? input.substring(9).split(" /by ") : new String[0];
                     if (parts.length < 2 || parts[0].trim().isEmpty()) {
                             throw new EmptyDescriptionException("The description of a deadline cannot be empty.");
                     }
-                    Task task = new Deadline(parts[0], parts[1]);
-                    tasks.add(task);
-                    HardDisk.saveTasks(tasks);
+                    if (!parts[1].matches("\\d{4}-\\d{2}-\\d{2}")) {
+                        System.out.println("Invalid date format. Please use yyyy-MM-dd.");
+                    } else {
+                        LocalDate by = LocalDate.parse(parts[1]);
+                        Task task = new Deadline(parts[0], by);
+                        tasks.add(task);
+                        HardDisk.saveTasks(tasks);
 
-                    System.out.println("***");
-                    System.out.println(" Wow deadline, you better rush. I've added this task:");
-                    System.out.println("   " + tasks.get(tasks.size() - 1).toString());
-                    System.out.println(" Now you have " + tasks.size() + " tasks in the list.");
-                    System.out.println("***");
+                        System.out.println("***");
+                        System.out.println(" Wow deadline, you better rush. I've added this task:");
+                        System.out.println("   " + tasks.get(tasks.size() - 1).toString());
+                        System.out.println(" Now you have " + tasks.size() + " tasks in the list.");
+                        System.out.println("***");
 
+                    }
+                    
                 } else if (input.startsWith("event")) {
                     String[] parts = input.length() > 6 ? input.substring(6).split(" /from | /to ") : new String[0];
                     if (parts.length < 3 || parts[0].trim().isEmpty()) {
                         throw new EmptyDescriptionException("The description of an event cannot be empty, "
                                 + "and it must include '/from' and '/to' parts.");
                     }
-                    Task task = new Event(parts[0].trim(), parts[1].trim(), parts[2].trim());
+                    LocalDate from = LocalDate.parse(parts[1].trim());
+                    LocalDate to = LocalDate.parse(parts[2].trim());
+                    Task task = new Event(parts[0].trim(), from, to);
                     tasks.add(task);
                     HardDisk.saveTasks(tasks);
 
@@ -136,9 +147,11 @@ public class MariiaChatbot {
                         "\", please write clearer...");
                     System.out.println("***");
                 }
+            } catch (Exception e) {
+                System.out.println();
+                System.out.println("Error starting chatbot: " + e.getMessage());
             }
-        } catch (Exception e) {
-            System.out.println("Error starting chatbot: " + e.getMessage());
         }
+        scanner.close();
     }
 }
