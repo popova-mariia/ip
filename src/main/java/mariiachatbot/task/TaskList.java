@@ -3,12 +3,21 @@ package mariiachatbot.task;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Contains a list of tasks.
+ */
 public class TaskList {
     private List<Task> tasks;
 
     public TaskList() {
         this.tasks = new ArrayList<>();
     }
+
+    /**
+     * Creates a new instance of TaskList.
+     *
+     * @param tasks A list of tasks to be contained in TaskList.
+     */
     public TaskList(List<Task> tasks) {
         if (tasks == null) {
             this.tasks = new ArrayList<>();
@@ -33,3 +42,4 @@ public class TaskList {
         return this.tasks.remove(index);
     }
 }
+

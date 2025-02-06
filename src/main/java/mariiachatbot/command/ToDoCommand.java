@@ -1,10 +1,12 @@
 package mariiachatbot.command;
 
-import mariiachatbot.task.TaskList;
 import mariiachatbot.storage.HardDisk;
-import mariiachatbot.ui.Ui;
+import mariiachatbot.task.TaskList;
 import mariiachatbot.task.ToDo;
-
+import mariiachatbot.ui.Ui;
+/**
+ * The ToDo class represents the command to create a todo task.
+ */
 public class ToDoCommand extends Command {
     private ToDo todo;
 

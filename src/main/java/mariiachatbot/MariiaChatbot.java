@@ -1,17 +1,25 @@
 package mariiachatbot;
 
-import mariiachatbot.parser.Parser;
-import mariiachatbot.ui.Ui;
-import mariiachatbot.task.TaskList;
-import mariiachatbot.storage.HardDisk;
 import mariiachatbot.command.Command;
+import mariiachatbot.parser.Parser;
+import mariiachatbot.storage.HardDisk;
+import mariiachatbot.task.TaskList;
+import mariiachatbot.ui.Ui;
 
+/**
+ * The main class for the Mariia chatbot.
+ * This chatbot manages a task list, supports commands like add, list, delete, mark, and unmark tasks.
+ */
 public class MariiaChatbot {
     private HardDisk hardDisk;
     private TaskList tasks;
     private Ui ui;
     private Parser parser;
-
+    /**
+     * Creates a new instance of mariia chatbot.
+     *
+     * @param filePath The path to the file where tasks are stored in hard disk.
+     */
     public MariiaChatbot(String filePath) {
         this.hardDisk = new HardDisk(filePath);
         this.ui = new Ui();
@@ -23,7 +31,9 @@ public class MariiaChatbot {
             tasks = new TaskList();
         }
     }
-
+    /**
+     * Runs the chatbot, continuously reading user input and executing commands until "bye" command.
+     */
     public void run() {
         ui.displayWelcomeMessage();
         boolean isExit = false;
@@ -50,4 +60,3 @@ public class MariiaChatbot {
         new MariiaChatbot("./src/main/java/data/mariia.txt").run();
     }
 }
-       

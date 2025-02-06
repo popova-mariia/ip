@@ -1,10 +1,13 @@
 package mariiachatbot.command;
 
-import mariiachatbot.task.Task;
 import mariiachatbot.storage.HardDisk;
-import mariiachatbot.ui.Ui;
+import mariiachatbot.task.Task;
 import mariiachatbot.task.TaskList;
+import mariiachatbot.ui.Ui;
 
+/**
+ * The UnmarkCommand class represents the command to mark a task as undone.
+ */
 public class UnmarkCommand extends Command {
     private int index;
 

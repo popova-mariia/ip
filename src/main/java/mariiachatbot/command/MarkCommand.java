@@ -1,10 +1,12 @@
 package mariiachatbot.command;
 
+import mariiachatbot.storage.HardDisk;
 import mariiachatbot.task.Task;
 import mariiachatbot.task.TaskList;
-import mariiachatbot.storage.HardDisk;
 import mariiachatbot.ui.Ui;
-
+/**
+ * The MarkCommand class represents the command to mark a task as done.
+ */
 public class MarkCommand extends Command {
     private int index;
 

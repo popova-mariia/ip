@@ -1,10 +1,13 @@
 package mariiachatbot.command;
 
-import mariiachatbot.task.Event;
 import mariiachatbot.storage.HardDisk;
-import mariiachatbot.ui.Ui;
+import mariiachatbot.task.Event;
 import mariiachatbot.task.TaskList;
+import mariiachatbot.ui.Ui;
 
+/**
+ * The EventCommand class represents the command to create a new event.
+ */
 public class EventCommand extends Command {
     private Event event;
 

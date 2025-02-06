@@ -1,10 +1,13 @@
 package mariiachatbot.command;
 
-import mariiachatbot.task.Task;
 import mariiachatbot.storage.HardDisk;
-import mariiachatbot.ui.Ui;
+import mariiachatbot.task.Task;
 import mariiachatbot.task.TaskList;
+import mariiachatbot.ui.Ui;
 
+/**
+ * The DeleteCommand class represents the command to remove a task at a given index.
+ */
 public class DeleteCommand extends Command {
     private int index;
 

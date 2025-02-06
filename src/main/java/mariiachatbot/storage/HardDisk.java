@@ -4,22 +4,16 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-
 import java.time.LocalDate;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import mariiachatbot.exception.EmptyDescriptionException;
-
-import mariiachatbot.task.Event;
-
-import mariiachatbot.task.Task;
-
 import mariiachatbot.task.Deadline;
-
+import mariiachatbot.task.Event;
+import mariiachatbot.task.Task;
 import mariiachatbot.task.ToDo;
-import java.util.Scanner;
 
 /**
  * The HardDisk class for the MariiaChatbot program.
@@ -35,7 +29,6 @@ public class HardDisk {
     }
     /**
      * Parses the task from hard disk (string format) into a Task format.
-     * 
      *
      * @param str String input from the hard disk.
      * @return A task which was represented by a string in the file.
@@ -51,25 +44,24 @@ public class HardDisk {
                 ToDo todo = new ToDo(parts[0]);
                 if (parts[1].trim().equals("X")) {
                     todo.markAsDone();
-                } else{
+                } else {
                     todo.markAsNotDone();
-                } 
+                }
                 return todo;
-            } else if (str.startsWith("deadline")){
+            } else if (str.startsWith("deadline")) {
                 String[] parts = str.length() > 9 ? str.substring(9).split(" /by | /done ") : new String[0];
                 System.out.println(parts);
                 if (parts.length < 2 || parts[0].trim().isEmpty()) {
-                        throw new EmptyDescriptionException("The description of a deadline cannot be empty.");
+                    throw new EmptyDescriptionException("The description of a deadline cannot be empty.");
                 }
                 LocalDate by = LocalDate.parse(parts[1].trim());
                 Deadline deadline = new Deadline(parts[0], by);
                 if (parts[2].trim().equals("X")) {
                     deadline.markAsDone();
-                } else{
+                } else {
                     deadline.markAsNotDone();
-                } 
+                }
                 return deadline;
-    
             } else if (str.startsWith("event")) {
                 String[] parts = str.length() > 6 ? str.substring(6).split(" /from | /to | /done ") : new String[0];
                 if (parts.length < 4 || parts[0].trim().isEmpty()) {
@@ -83,9 +75,9 @@ public class HardDisk {
                     event.markAsDone();
                 } else {
                     event.markAsNotDone();
-                } 
+                }
                 return event;
-            } 
+            }
         } catch (EmptyDescriptionException e) {
             System.out.println(e);
         }
@@ -134,7 +126,7 @@ public class HardDisk {
                 System.out.println("Error creating file: " + e.getMessage());
             }
         }
-        try (FileWriter writer = new FileWriter(file)) { 
+        try (FileWriter writer = new FileWriter(file)) {
             for (Task task : tasks) {
                 writer.write(convertToFileString(task) + '\n');
             }
@@ -159,7 +151,7 @@ public class HardDisk {
 
         if (!file.exists()) {
             System.out.println("No saved tasks found. Starting with an empty list.");
-            return tasks; 
+            return tasks;
         }
 
         try (Scanner scanner = new Scanner(file)) {
@@ -180,3 +172,4 @@ public class HardDisk {
         return tasks;
     }
 }
+
