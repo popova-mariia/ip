@@ -16,6 +16,7 @@ import mariiachatbot.task.Task;
 
 /**
  * Tests the HardDisk class.
+ * Added header for a commit.
  */
 public class HardDiskTest {
     private static final String TEST_FILE_PATH = "./test_mariiachatbot.txt";
