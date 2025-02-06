@@ -7,6 +7,7 @@ import mariiachatbot.command.Command;
 import mariiachatbot.command.DeadlineCommand;
 import mariiachatbot.command.DeleteCommand;
 import mariiachatbot.command.EventCommand;
+import mariiachatbot.command.FindCommand;
 import mariiachatbot.command.InvalidCommand;
 import mariiachatbot.command.ListCommand;
 import mariiachatbot.command.MarkCommand;
@@ -70,6 +71,12 @@ public class Parser {
         } else if (input.startsWith("delete")) {
             int index = Integer.parseInt(input.split(" ")[1]);
             return new DeleteCommand(index);
+        } else if (input.startsWith("find")) {
+            String keyword = input.length() > 5 ? input.substring(5).trim() : "";
+            if (keyword.isEmpty()) {
+                return new InvalidCommand("Dk what to search for, try again.");
+            }
+            return new FindCommand(keyword);
         } else {
             return new InvalidCommand("Bro have no idea what you mean by \"" + input
                     + "\", please write clearer...");

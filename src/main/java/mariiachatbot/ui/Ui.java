@@ -1,5 +1,6 @@
 package mariiachatbot.ui;
 
+import java.util.List;
 import java.util.Scanner;
 
 import mariiachatbot.task.Task;
@@ -115,5 +116,19 @@ public class Ui {
         System.out.println(" OOPS!!! There was an error loading your tasks.");
         System.out.println(" Starting with an empty task list.");
         System.out.println("***");
+    }
+    /**
+     * Shows the find results based on the keyword.
+     *
+     * @param tasks The list of matching tasks.
+     */
+    public void showFindResults(List<Task> tasks) {
+        System.out.println(" Here are the matching tasks in your list:");
+        for (int i = 0; i < tasks.size(); i++) {
+            System.out.println((i + 1) + "." + tasks.get(i).toString());
+        }
+        if (tasks.isEmpty()) {
+            System.out.println(" No matching tasks found.");
+        }
     }
 }
