@@ -1,4 +1,4 @@
-todo say bye /done X
 event party /from 1209-03-03 /to 1309-04-04 /done N
 todo sing a song /done N
 deadline hw /by 1990-02-02 /done N
+event another party /from 2025-02-03 /to 2025-03-03 /done X

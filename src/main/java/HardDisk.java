@@ -12,8 +12,13 @@ import java.util.Scanner;
  * Works as a storage to save all the tasks to the hard disk and work with them.
  */
 public class HardDisk {
+    private String filePath;
     //public static final String PATH = System.getProperty("user.dir") + "/src/main/java/data/mariia.txt";
-    public static final String PATH = "./data/mariia.txt";
+    //public static final String PATH = "./data/mariia.txt";
+
+    public HardDisk(String filePath) {
+        this.filePath = filePath;
+    }
     /**
      * Parses the task from hard disk (string format) into a Task format.
      * 
@@ -22,7 +27,7 @@ public class HardDisk {
      * @return A task which was represented by a string in the file.
      * @throws EmptyDescriptionException If some part of the command (ie description, by, from and to) is absent.
      */
-    public static Task parseTask(String str) {
+    public Task parseTask(String str) {
         try {
             if (str.startsWith("todo")) {
                 String[] parts = str.length() > 5 ? str.substring(5).split(" /done ") : new String[0];
@@ -78,7 +83,7 @@ public class HardDisk {
      * @param task Task created.
      * @return Text version of the task that can be uploaded to hard disk.
      */
-    public static String convertToFileString(Task task) {
+    public String convertToFileString(Task task) {
         String isDone = "N";
         if (task.isDone()) {
             isDone = "X";
@@ -106,8 +111,8 @@ public class HardDisk {
      * @param tasks A list that includes all the tasks ever created and modified.
      * @throws IOException If file does not exists or filewriter cannot be created.
      */
-    public static void saveTasks(List<Task> tasks) {
-        File file = new File(PATH);
+    public void saveTasks(List<Task> tasks) {
+        File file = new File(filePath);
         if (!file.exists()) {
             try {
                 file.createNewFile();
@@ -132,9 +137,9 @@ public class HardDisk {
      * @returns A list of tasks loaded from the hard drive.
      * @throws IOException If file is not found, or tasks could not be loaded.
      */
-    public static List<Task> loadTasks() {
+    public List<Task> loadTasks() {
         List<Task> tasks = new ArrayList<>();
-        File file = new File(PATH);
+        File file = new File(filePath);
 
         if (!file.exists()) {
             System.out.println("No saved tasks found. Starting with an empty list.");
