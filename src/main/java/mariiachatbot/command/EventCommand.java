@@ -1,3 +1,10 @@
+package mariiachatbot.command;
+
+import mariiachatbot.task.Event;
+import mariiachatbot.storage.HardDisk;
+import mariiachatbot.ui.Ui;
+import mariiachatbot.task.TaskList;
+
 public class EventCommand extends Command {
     private Event event;
 

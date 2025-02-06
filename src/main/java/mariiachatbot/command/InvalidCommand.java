@@ -1,3 +1,9 @@
+package mariiachatbot.command;
+
+import mariiachatbot.task.TaskList;
+import mariiachatbot.storage.HardDisk;
+import mariiachatbot.ui.Ui;
+
 public class InvalidCommand extends Command {
     private String errorMessage;
 

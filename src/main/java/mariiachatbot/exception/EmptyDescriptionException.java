@@ -1,3 +1,4 @@
+package mariiachatbot.exception;
 /**
  * Exception thrown when some part of description is missing.
  */

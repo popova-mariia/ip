@@ -1,3 +1,10 @@
+package mariiachatbot.command;
+
+import mariiachatbot.task.Task;
+import mariiachatbot.task.TaskList;
+import mariiachatbot.storage.HardDisk;
+import mariiachatbot.ui.Ui;
+
 public class MarkCommand extends Command {
     private int index;
 

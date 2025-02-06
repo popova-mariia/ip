@@ -1,3 +1,8 @@
+package mariiachatbot.ui;
+
+import mariiachatbot.task.TaskList;
+
+import mariiachatbot.task.Task;
 import java.util.Scanner;
 
 public class Ui {
@@ -27,7 +32,6 @@ public class Ui {
     }
     public void showTaskList(TaskList tasks) {
         System.out.println(" Here is your list:");
-        System.out.println(tasks.size());
         for (int i = 0; i < tasks.size(); i++) {
             System.out.println((i + 1) + "." + tasks.get(i).toString());
         }

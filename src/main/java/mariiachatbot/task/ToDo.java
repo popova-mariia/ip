@@ -1,3 +1,4 @@
+package mariiachatbot.task;
 /**
  * Subclass of task which has only description, no deadlines or duration.
  */

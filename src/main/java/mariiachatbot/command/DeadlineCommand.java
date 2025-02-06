@@ -1,3 +1,10 @@
+package mariiachatbot.command;
+
+import mariiachatbot.storage.HardDisk;
+import mariiachatbot.task.Deadline;
+import mariiachatbot.ui.Ui;
+import mariiachatbot.task.TaskList;
+
 public class DeadlineCommand extends Command {
     private Deadline deadline;
 

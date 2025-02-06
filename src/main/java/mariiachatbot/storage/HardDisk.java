@@ -1,10 +1,24 @@
+package mariiachatbot.storage;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+
 import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import mariiachatbot.exception.EmptyDescriptionException;
+
+import mariiachatbot.task.Event;
+
+import mariiachatbot.task.Task;
+
+import mariiachatbot.task.Deadline;
+
+import mariiachatbot.task.ToDo;
 import java.util.Scanner;
 
 /**
@@ -139,6 +153,8 @@ public class HardDisk {
      */
     public List<Task> loadTasks() {
         List<Task> tasks = new ArrayList<>();
+        System.out.println("loading files");
+        System.out.println("Current working directory: " + System.getProperty("user.dir"));
         File file = new File(filePath);
 
         if (!file.exists()) {

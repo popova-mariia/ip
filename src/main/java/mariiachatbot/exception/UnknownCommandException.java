@@ -1,3 +1,4 @@
+package mariiachatbot.exception;
 /**
  * Exception thrown when an unknown or invalid command is entered in MariiaChatbot.
  */

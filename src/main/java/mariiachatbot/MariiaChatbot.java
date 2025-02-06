@@ -1,16 +1,11 @@
-/**
- * The main class for the MariiaChatbot program.
- * 
- * To use my bot, run the program and use the following supported programs:
- * - `bye`: Exits the program and saves tasks to the hard disk.
- * - `list`: lists all current tasks.
- * - `todo <description>`: Adds a ToDo task.
- * - `deadline <description> /by <date>`: Adds a Deadline task.
- * - `event <description> /from <start> /to <end>`: Adds an Event task.
- * - `mark <index>`: Marks task as done. Index must be within boundaries.
- * - `unmark <index>`: Marks task as not done.
- * - `delete <index>`: Deletes the task at specified index.
- */
+package mariiachatbot;
+
+import mariiachatbot.parser.Parser;
+import mariiachatbot.ui.Ui;
+import mariiachatbot.task.TaskList;
+import mariiachatbot.storage.HardDisk;
+import mariiachatbot.command.Command;
+
 public class MariiaChatbot {
     private HardDisk hardDisk;
     private TaskList tasks;
@@ -51,8 +46,8 @@ public class MariiaChatbot {
      *
      * @param args Command-line arguments (not used).
      */
-     public static void main(String[] args) {
-        new MariiaChatbot("./data/mariia.txt").run();
+    public static void main(String[] args) {
+        new MariiaChatbot("./src/main/java/data/mariia.txt").run();
     }
 }
        

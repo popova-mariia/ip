@@ -1,3 +1,4 @@
+package mariiachatbot.task;
 /**
  * Abstract class that represents a generic task.
  */
