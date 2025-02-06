@@ -32,7 +32,6 @@ public class MariiaChatbot {
         }
     }
     /**
-     * Runs the chatbot, continuously reading user input and executing commands until "bye" command.
      */
     public void run() {
         ui.displayWelcomeMessage();

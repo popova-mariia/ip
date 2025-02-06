@@ -2,7 +2,7 @@ package mariiachatbot.task;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.stream.Stream;
 /**
  * Contains a list of tasks.
  */
@@ -40,6 +40,9 @@ public class TaskList {
     }
     public Task remove(int index) {
         return this.tasks.remove(index);
+    }
+    public Stream<Task> stream() {
+        return tasks.stream();
     }
 }
 
