@@ -1,21 +1,23 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 /**
  * Subclass of task which has  description, and duration (from when and to when the task will last).
  */
 public class Event extends Task {
-    private String from;
-    private String to;
+    private LocalDate from;
+    private LocalDate to;
 
-    public Event(String description, String from, String to) {
+    public Event(String description, LocalDate from, LocalDate to) {
         super(description);
         this.from = from;
         this.to = to;
     }
 
-    public String getFrom() {
+    public LocalDate getFrom() {
         return this.from;
     }
 
-    public String getTo() {
+    public LocalDate getTo() {
         return this.to;
     }
 
@@ -26,6 +28,7 @@ public class Event extends Task {
 
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (from: " + from + " to: " + to + ")";
+        return "[E]" + super.toString() + " (from: " + from.format(DateTimeFormatter.ofPattern("MMM d yyyy")) 
+                + " to: " + to.format(DateTimeFormatter.ofPattern("MMM d yyyy")) + ")";
     }
 }
