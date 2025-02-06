@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -37,11 +37,13 @@ public class HardDisk {
                 } 
                 return todo;
             } else if (str.startsWith("deadline")){
-                String[] parts = str.length() > 9 ? str.substring(9).split(" /by  | /done ") : new String[0];
-                if (parts.length < 3 || parts[0].trim().isEmpty()) {
+                String[] parts = str.length() > 9 ? str.substring(9).split(" /by | /done ") : new String[0];
+                System.out.println(parts);
+                if (parts.length < 2 || parts[0].trim().isEmpty()) {
                         throw new EmptyDescriptionException("The description of a deadline cannot be empty.");
                 }
-                Deadline deadline = new Deadline(parts[0], parts[1]);
+                LocalDate by = LocalDate.parse(parts[1].trim());
+                Deadline deadline = new Deadline(parts[0], by);
                 if (parts[2].trim().equals("X")) {
                     deadline.markAsDone();
                 } else{
@@ -55,7 +57,9 @@ public class HardDisk {
                     throw new EmptyDescriptionException("The description of an event cannot be empty, and it must "
                             + "include '/from' and '/to' and '/done' parts.");
                 }
-                Event event = new Event(parts[0].trim(), parts[1].trim(), parts[2].trim());
+                LocalDate from = LocalDate.parse(parts[1].trim());
+                LocalDate to = LocalDate.parse(parts[2].trim());
+                Event event = new Event(parts[0].trim(), from, to);
                 if (parts[3].trim().equals("X")) {
                     event.markAsDone();
                 } else {
@@ -84,13 +88,13 @@ public class HardDisk {
             return "todo " + description + " /done " + isDone;
         } else if (task instanceof Deadline) {
             String description = task.getDescription();
-            String by = ((Deadline) task).getBy();
-            return "todo " + description + " /by " + by + " /done " + isDone;
+            LocalDate by = ((Deadline) task).getBy();
+            return "deadline " + description + " /by " + by + " /done " + isDone;
         } else if (task instanceof Event) {
             String description = task.getDescription();
-            String from = ((Event) task).getFrom();
-            String to = ((Event) task).getTo();
-            return "todo " + description + " /from " + from + " /to " + to + " /done " + isDone;
+            LocalDate from = ((Event) task).getFrom();
+            LocalDate to = ((Event) task).getTo();
+            return "event " + description + " /from " + from + " /to " + to + " /done " + isDone;
         } else {
             return " ";
         }
