@@ -30,6 +30,7 @@ test {
 }
 
 checkstyle {
+    //adding comment for A-CheckStyle branch
     configFile = file("config/checkstyle/checkstyle.xml")
     toolVersion = '10.2'
 }
