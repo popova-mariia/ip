@@ -58,4 +58,8 @@ public class MariiaChatbot {
     public static void main(String[] args) {
         new MariiaChatbot("./src/main/java/data/mariia.txt").run();
     }
+
+    public String getResponse(String input) {
+        return "MariiaChatBot heard: " + input;
+    }
 }
