@@ -8,8 +8,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-
+import mariiachatbot.MariiaChatbot;
 
 
 public class Main extends Application {
@@ -21,6 +20,7 @@ public class Main extends Application {
     private Scene scene;
     private Image userImage = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
     private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/DaBot.png"));
+    private MariiaChatbot mariiaChatbot = new MariiaChatbot("./src/main/java/data/mariia.txt");
 
     @Override
     public void start(Stage stage) {
@@ -83,7 +83,12 @@ public class Main extends Application {
     }
 
     private void handleUserInput() {
-        dialogContainer.getChildren().addAll(new DialogBox(userInput.getText(), userImage));
+        String userText = userInput.getText();
+        String dukeText = mariiaChatbot.getResponse(userInput.getText());
+        dialogContainer.getChildren().addAll(
+                new DialogBox(userText, userImage),
+                new DialogBox(dukeText, dukeImage)
+        );
         userInput.clear();
     }
 }
