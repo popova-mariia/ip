@@ -20,6 +20,7 @@ public class DeleteCommand extends Command {
         if (index > 0 && index <= tasks.size()) {
             Task task = tasks.remove(index - 1);
             hardDisk.saveTasks(tasks.getTasks());
+            hardDisk.logLatestChange("delete " + index + " " + hardDisk.convertToFileString(task));
             return ui.showDeleteTask(task, tasks.size());
         } else {
             return ui.showError("Invalid task index.");

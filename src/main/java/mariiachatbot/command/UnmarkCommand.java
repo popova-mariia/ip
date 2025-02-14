@@ -21,6 +21,7 @@ public class UnmarkCommand extends Command {
             Task task = tasks.get(index - 1);
             task.markAsNotDone();
             hardDisk.saveTasks(tasks.getTasks());
+            hardDisk.logLatestChange("unmark " + index);
             return ui.showUnmarkTask(task);
         } else {
             return ui.showError("Invalid task index.");
