@@ -34,12 +34,11 @@ public class Parser {
             return new ListCommand();
         } else if (input.startsWith("todo")) {
             String description = input.length() > 5 ? input.substring(5).trim() : "";
-            if (!description.isEmpty()) {
-                ToDo todo = new ToDo(description);
-                return new ToDoCommand(todo);
-            } else {
+            if (description.isEmpty()) {
                 return new InvalidCommand("This command sounds like a keyspam");
             }
+            ToDo todo = new ToDo(description);
+            return new ToDoCommand(todo);
         } else if (input.startsWith("deadline")) {
             String[] parts = input.length() > 9 ? input.substring(9).split(" /by ") : new String[0];
             if (parts.length < 2 || parts[0].trim().isEmpty()) {
@@ -47,11 +46,11 @@ public class Parser {
             }
             if (!parts[1].matches("\\d{4}-\\d{2}-\\d{2}")) {
                 return new InvalidCommand("Invalid date format. Please use yyyy-MM-dd.");
-            } else {
-                LocalDate by = LocalDate.parse(parts[1]);
-                Deadline deadline = new Deadline(parts[0], by);
-                return new DeadlineCommand(deadline);
             }
+            LocalDate by = LocalDate.parse(parts[1]);
+            Deadline deadline = new Deadline(parts[0], by);
+            return new DeadlineCommand(deadline);
+
         } else if (input.startsWith("event")) {
             String[] parts = input.length() > 6 ? input.substring(6).split(" /from | /to ") : new String[0];
             if (parts.length < 3 || parts[0].trim().isEmpty()) {
