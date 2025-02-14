@@ -28,6 +28,7 @@ public class Parser {
      * @return The corresponding Command object representing the user's action.
      */
     public static Command parseCommand(String input) {
+        assert input != null : "Input command should not be null";
         if (input.startsWith("bye")) {
             return new ByeCommand();
         } else if (input.startsWith("list")) {
@@ -42,6 +43,7 @@ public class Parser {
             }
         } else if (input.startsWith("deadline")) {
             String[] parts = input.length() > 9 ? input.substring(9).split(" /by ") : new String[0];
+            assert parts.length == 2 : "Deadline command should have a description and a due date";
             if (parts.length < 2 || parts[0].trim().isEmpty()) {
                 return new InvalidCommand("The description of a deadline cannot be empty.");
             }
@@ -54,6 +56,7 @@ public class Parser {
             }
         } else if (input.startsWith("event")) {
             String[] parts = input.length() > 6 ? input.substring(6).split(" /from | /to ") : new String[0];
+            assert parts.length == 3 : "Event command should have a description, start, and end time";
             if (parts.length < 3 || parts[0].trim().isEmpty()) {
                 return new InvalidCommand("The description of an event cannot be empty, "
                         + "and it must include '/from' and '/to' parts.");

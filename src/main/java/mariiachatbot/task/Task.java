@@ -12,6 +12,7 @@ public abstract class Task {
      * @param description Task description.
      */
     public Task(String description) {
+        assert description != null && !description.trim().isEmpty() : "Task description cannot be empty";
         this.description = description;
         this.isDone = false;
     }

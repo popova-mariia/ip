@@ -44,7 +44,7 @@ public class MainWindow extends AnchorPane {
 
     /** Injects the Duke instance */
     public void setMariia(MariiaChatbot mariiaChatbot) {
-        System.out.println("setMariia(...) called with: " + mariiaChatbot);
+        assert mariiaChatbot != null : "MariiaChatbot instance cannot be null";
         this.mariiaChatbot = mariiaChatbot;
         String welcomeMessage = mariiaChatbot.welcomeUser();
         // Alternatively, hardcode it:

@@ -21,10 +21,9 @@ import mariiachatbot.task.ToDo;
  */
 public class HardDisk {
     private String filePath;
-    //public static final String PATH = System.getProperty("user.dir") + "/src/main/java/data/mariia.txt";
-    //public static final String PATH = "./data/mariia.txt";
 
     public HardDisk(String filePath) {
+        assert filePath != null : "File path cannot be null";
         this.filePath = filePath;
     }
     /**
