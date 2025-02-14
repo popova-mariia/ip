@@ -8,7 +8,7 @@ import mariiachatbot.ui.Ui;
  */
 public abstract class Command {
 
-    public abstract void execute(TaskList tasks, Ui ui, HardDisk hardDisk);
+    public abstract String execute(TaskList tasks, Ui ui, HardDisk hardDisk);
     public boolean isExit() {
         return false;
     }

@@ -6,6 +6,7 @@ import java.util.Scanner;
 import mariiachatbot.task.Task;
 import mariiachatbot.task.TaskList;
 
+
 /**
  * Handles input and output from user.
  */
@@ -20,11 +21,13 @@ public class Ui {
     /**
      * Displays the welcome message.
      */
-    public void displayWelcomeMessage() {
-        System.out.println("***");
-        System.out.println(" Hello! I'm MariiaChatbot");
-        System.out.println(" What can I do for you?");
-        System.out.println("***");
+    public String displayWelcomeMessage() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("***\n");
+        sb.append(" Hello! I'm MariiaChatbot\n");
+        sb.append(" What can I do for you?\n");
+        sb.append("***\n");
+        return sb.toString();
     }
 
     public boolean hasNextLine() {
@@ -34,8 +37,8 @@ public class Ui {
     public String readNextLine() {
         return scanner.nextLine();
     }
-    public void showGoodbyeMessage() {
-        System.out.println(" Bye. Hope to never see you again!");
+    public String showGoodbyeMessage() {
+        return "Bye. Hope to never see you again!";
     }
 
     /**
@@ -43,11 +46,13 @@ public class Ui {
      *
      * @param tasks TaskList containing the tasks.
      */
-    public void showTaskList(TaskList tasks) {
-        System.out.println(" Here is your list:");
+    public String showTaskList(TaskList tasks) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(" Here is your list:\n");
         for (int i = 0; i < tasks.size(); i++) {
-            System.out.println((i + 1) + "." + tasks.get(i).toString());
+            sb.append((i + 1)).append(".").append(tasks.get(i).toString()).append("\n");
         }
+        return sb.toString();
     }
     /**
      * Shows that a new tasks is added.
@@ -55,34 +60,40 @@ public class Ui {
      * @param task The task to be added.
      * @param size The total number of tasks after in the list.
      */
-    public void showAddTask(Task task, int size) {
-        System.out.println("***");
-        System.out.println(" You are a busy person! I've added this task:");
-        System.out.println("   " + task.toString());
-        System.out.println(" Now you have " + size + " tasks in the list.");
-        System.out.println("***");
+    public String showAddTask(Task task, int size) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("***\n");
+        sb.append(" You are a busy person! I've added this task:\n");
+        sb.append("   ").append(task.toString()).append("\n");
+        sb.append(" Now you have ").append(size).append(" tasks in the list.\n");
+        sb.append("***\n");
+        return sb.toString();
     }
     /**
      * Shows that a task was marked as done.
      *
      * @param task The task that is to be marked as done.
      */
-    public void showMarkTask(Task task) {
-        System.out.println("***");
-        System.out.println(" Nice! I've marked this task as done:");
-        System.out.println("   " + task);
-        System.out.println("***");
+    public String showMarkTask(Task task) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("***\n");
+        sb.append(" Nice! I've marked this task as done:\n");
+        sb.append("   ").append(task.toString()).append("\n");
+        sb.append("***\n");
+        return sb.toString();
     }
     /**
      * The task that is to be marked as not done.
      *
      * @param task The task that was unmarked.
      */
-    public void showUnmarkTask(Task task) {
-        System.out.println("***");
-        System.out.println(" OK, I've marked this task as not done yet:");
-        System.out.println("   " + task);
-        System.out.println("***");
+    public String showUnmarkTask(Task task) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("***\n");
+        sb.append(" OK, I've marked this task as not done yet:\n");
+        sb.append("   ").append(task.toString()).append("\n");
+        sb.append("***\n");
+        return sb.toString();
     }
     /**
      * Shows that message was deleted.
@@ -90,45 +101,54 @@ public class Ui {
      * @param task The task that is to be deleted.
      * @param size The total number of tasks in the list.
      */
-    public void showDeleteTask(Task task, int size) {
-        System.out.println("***");
-        System.out.println(" Sure, I've removed this task:");
-        System.out.println("   " + task);
-        System.out.println(" Now you have " + size + " tasks in the list.");
-        System.out.println("***");
+    public String showDeleteTask(Task task, int size) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("***\n");
+        sb.append(" Sure, I've removed this task:\n");
+        sb.append("   ").append(task.toString()).append("\n");
+        sb.append(" Now you have ").append(size).append(" tasks in the list.\n");
+        sb.append("***\n");
+        return sb.toString();
     }
     /**
      * Shows an error message.
      *
      * @param message The error message to be shown.
      */
-    public void showError(String message) {
-        System.out.println("***");
-        System.out.println(" OOPS!!! " + message);
-        System.out.println("***");
+    public String showError(String message) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("***\n");
+        sb.append(" OOPS!!! ").append(message).append("\n");
+        sb.append("***\n");
+        return sb.toString();
     }
 
     /**
      * Shows an error message when there is an problem loading tasks from storage.
      */
-    public void showLoadingError() {
-        System.out.println("***");
-        System.out.println(" OOPS!!! There was an error loading your tasks.");
-        System.out.println(" Starting with an empty task list.");
-        System.out.println("***");
+    public String showLoadingError() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("***\n");
+        sb.append(" OOPS!!! There was an error loading your tasks.\n");
+        sb.append(" Starting with an empty task list.\n");
+        sb.append("***\n");
+        return sb.toString();
     }
     /**
      * Shows the find results based on the keyword.
      *
      * @param tasks The list of matching tasks.
      */
-    public void showFindResults(List<Task> tasks) {
-        System.out.println(" Here are the matching tasks in your list:");
-        for (int i = 0; i < tasks.size(); i++) {
-            System.out.println((i + 1) + "." + tasks.get(i).toString());
-        }
+    public String showFindResults(List<Task> tasks) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(" Here are the matching tasks in your list:\n");
         if (tasks.isEmpty()) {
-            System.out.println(" No matching tasks found.");
+            sb.append(" No matching tasks found.\n");
+        } else {
+            for (int i = 0; i < tasks.size(); i++) {
+                sb.append((i + 1)).append(".").append(tasks.get(i).toString()).append("\n");
+            }
         }
+        return sb.toString();
     }
 }

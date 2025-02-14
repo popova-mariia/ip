@@ -14,7 +14,8 @@ public class InvalidCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, HardDisk hardDisk) {
-        ui.showError(errorMessage);
+    public String execute(TaskList tasks, Ui ui, HardDisk hardDisk) {
+
+        return ui.showError(errorMessage);
     }
 }

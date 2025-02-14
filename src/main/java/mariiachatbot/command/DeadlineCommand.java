@@ -16,9 +16,9 @@ public class DeadlineCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, HardDisk hardDisk) {
+    public String execute(TaskList tasks, Ui ui, HardDisk hardDisk) {
         tasks.addTask(this.deadline);
         hardDisk.saveTasks(tasks.getTasks());
-        ui.showAddTask(this.deadline, tasks.size());
+        return ui.showAddTask(this.deadline, tasks.size());
     }
 }

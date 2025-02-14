@@ -8,8 +8,9 @@ import mariiachatbot.ui.Ui;
  */
 public class ByeCommand extends Command {
     @Override
-    public void execute(TaskList tasks, Ui ui, HardDisk hardDisk) {
-        ui.showGoodbyeMessage();
+    public String execute(TaskList tasks, Ui ui, HardDisk hardDisk) {
+
+        return ui.showGoodbyeMessage();
     }
     @Override
     public boolean isExit() {

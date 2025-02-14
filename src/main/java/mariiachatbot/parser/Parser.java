@@ -27,7 +27,7 @@ public class Parser {
      * @param input The user input string to be parsed.
      * @return The corresponding Command object representing the user's action.
      */
-    public Command parseCommand(String input) {
+    public static Command parseCommand(String input) {
         if (input.startsWith("bye")) {
             return new ByeCommand();
         } else if (input.startsWith("list")) {

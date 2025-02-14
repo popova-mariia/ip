@@ -15,14 +15,14 @@ public class MarkCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, HardDisk hardDisk) {
+    public String execute(TaskList tasks, Ui ui, HardDisk hardDisk) {
         if (index > 0 && index <= tasks.size()) {
             Task task = tasks.get(index - 1);
             task.markAsDone();
             hardDisk.saveTasks(tasks.getTasks());
-            ui.showMarkTask(task);
+            return ui.showMarkTask(task);
         } else {
-            ui.showError("Invalid task index.");
+            return ui.showError("Invalid task index.");
         }
     }
 }

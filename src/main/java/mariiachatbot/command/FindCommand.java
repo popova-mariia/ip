@@ -19,11 +19,11 @@ public class FindCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, HardDisk hardDisk) {
+    public String execute(TaskList tasks, Ui ui, HardDisk hardDisk) {
         List<Task> matchingTasks = tasks.stream()
                 .filter(task -> task.getDescription().contains(keyword))
                 .collect(Collectors.toList());
-        ui.showFindResults(matchingTasks);
+        return ui.showFindResults(matchingTasks);
     }
 
     @Override

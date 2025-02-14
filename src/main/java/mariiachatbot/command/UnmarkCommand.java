@@ -16,14 +16,14 @@ public class UnmarkCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, HardDisk hardDisk) {
+    public String execute(TaskList tasks, Ui ui, HardDisk hardDisk) {
         if (index > 0 && index <= tasks.size()) {
             Task task = tasks.get(index - 1);
             task.markAsNotDone();
             hardDisk.saveTasks(tasks.getTasks());
-            ui.showUnmarkTask(task);
+            return ui.showUnmarkTask(task);
         } else {
-            ui.showError("Invalid task index.");
+            return ui.showError("Invalid task index.");
         }
     }
 }

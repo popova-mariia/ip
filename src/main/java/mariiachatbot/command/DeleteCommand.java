@@ -16,13 +16,13 @@ public class DeleteCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, HardDisk hardDisk) {
+    public String execute(TaskList tasks, Ui ui, HardDisk hardDisk) {
         if (index > 0 && index <= tasks.size()) {
             Task task = tasks.remove(index - 1);
             hardDisk.saveTasks(tasks.getTasks());
-            ui.showDeleteTask(task, tasks.size());
+            return ui.showDeleteTask(task, tasks.size());
         } else {
-            ui.showError("Invalid task index.");
+            return ui.showError("Invalid task index.");
         }
     }
 }

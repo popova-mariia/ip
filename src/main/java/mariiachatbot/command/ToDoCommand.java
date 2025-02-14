@@ -15,9 +15,9 @@ public class ToDoCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, HardDisk hardDisk) {
+    public String execute(TaskList tasks, Ui ui, HardDisk hardDisk) {
         tasks.addTask(this.todo);
         hardDisk.saveTasks(tasks.getTasks());
-        ui.showAddTask(this.todo, tasks.size());
+        return ui.showAddTask(this.todo, tasks.size());
     }
 }

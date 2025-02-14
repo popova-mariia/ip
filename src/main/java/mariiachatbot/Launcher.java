@@ -1,3 +1,5 @@
+package mariiachatbot;
+
 import javafx.application.Application;
 
 /**
