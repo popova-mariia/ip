@@ -15,6 +15,7 @@ public class MariiaChatbot {
     private TaskList tasks;
     private Ui ui;
     private Parser parser;
+
     /**
      * Creates a new instance of mariia chatbot.
      *
@@ -31,7 +32,9 @@ public class MariiaChatbot {
             tasks = new TaskList();
         }
     }
+
     /**
+     * Starts running the program
      */
     public void run() {
         ui.displayWelcomeMessage();
@@ -47,6 +50,7 @@ public class MariiaChatbot {
             }
         }
     }
+
     /**
      * Marks the entry point for the MariiaChatbot program.
      * Initializes the task list, loads tasks from disk, and interacts with the user via the console.
