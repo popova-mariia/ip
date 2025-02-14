@@ -12,6 +12,7 @@ import mariiachatbot.command.InvalidCommand;
 import mariiachatbot.command.ListCommand;
 import mariiachatbot.command.MarkCommand;
 import mariiachatbot.command.ToDoCommand;
+import mariiachatbot.command.UndoCommand;
 import mariiachatbot.command.UnmarkCommand;
 import mariiachatbot.task.Deadline;
 import mariiachatbot.task.Event;
@@ -80,6 +81,8 @@ public class Parser {
                 return new InvalidCommand("Dk what to search for, try again.");
             }
             return new FindCommand(keyword);
+        } else if (input.startsWith("undo")) {
+            return new UndoCommand();
         } else {
             return new InvalidCommand("Bro have no idea what you mean by \"" + input
                     + "\", please write clearer...");

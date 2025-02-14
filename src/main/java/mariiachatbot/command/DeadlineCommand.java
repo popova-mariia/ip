@@ -19,6 +19,7 @@ public class DeadlineCommand extends Command {
     public String execute(TaskList tasks, Ui ui, HardDisk hardDisk) {
         tasks.addTask(this.deadline);
         hardDisk.saveTasks(tasks.getTasks());
+        hardDisk.logLatestChange("deadline " + this.deadline.getDescription() + " /by " + this.deadline.getBy());
         return ui.showAddTask(this.deadline, tasks.size());
     }
 }

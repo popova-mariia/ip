@@ -170,5 +170,17 @@ public class HardDisk {
         }
         return tasks;
     }
+
+    /**
+     * Logs the latest modifying command into latest-changes.txt
+     */
+    public static void logLatestChange(String change) {
+        try (FileWriter writer = new FileWriter("./src/main/java/data/latest-changes.txt", false)) {
+            writer.write(change);
+        } catch (IOException e) {
+            System.out.println("Error logging latest change: " + e.getMessage());
+        }
+    }
+
 }
 

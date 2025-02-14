@@ -18,6 +18,7 @@ public class ToDoCommand extends Command {
     public String execute(TaskList tasks, Ui ui, HardDisk hardDisk) {
         tasks.addTask(this.todo);
         hardDisk.saveTasks(tasks.getTasks());
+        hardDisk.logLatestChange("todo " + this.todo.getDescription());
         return ui.showAddTask(this.todo, tasks.size());
     }
 }

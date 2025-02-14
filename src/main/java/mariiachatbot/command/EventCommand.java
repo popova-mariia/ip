@@ -19,6 +19,8 @@ public class EventCommand extends Command {
     public String execute(TaskList tasks, Ui ui, HardDisk hardDisk) {
         tasks.addTask(this.event);
         hardDisk.saveTasks(tasks.getTasks());
+        hardDisk.logLatestChange("event " + this.event.getDescription() + " /from " + this.event.getFrom()
+                + " /to " + this.event.getTo());
         return ui.showAddTask(this.event, tasks.size());
     }
 }
