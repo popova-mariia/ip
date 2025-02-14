@@ -21,7 +21,8 @@ public class Main extends Application {
         try {
             System.out.println("Current working directory: " + System.getProperty("user.dir"));
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/MainWindow.fxml"));
-            System.out.println("fxmlLoader is: " + fxmlLoader);
+            assert fxmlLoader != null : "FXMLLoader failed to initialize";
+
             AnchorPane ap = fxmlLoader.load();
             MainWindow controller = fxmlLoader.getController();
             controller.setMariia(bot);

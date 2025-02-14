@@ -51,7 +51,7 @@ checkstyle {
 }
 
 application {
-    mainClass.set("Launcher")
+    mainClass.set("mariiachatbot.Launcher")
 }
 
 shadowJar {
