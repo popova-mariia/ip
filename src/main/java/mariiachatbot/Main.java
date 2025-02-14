@@ -14,7 +14,7 @@ import mariiachatbot.ui.MainWindow;
  */
 public class Main extends Application {
 
-    private MariiaChatbot bot = new MariiaChatbot("./src/main/java/data/mariia.txt");
+    private MariiaChatbot mariiaChatbot = new MariiaChatbot("./src/main/java/data/mariia.txt");
 
     @Override
     public void start(Stage stage) {
@@ -25,7 +25,7 @@ public class Main extends Application {
 
             AnchorPane ap = fxmlLoader.load();
             MainWindow controller = fxmlLoader.getController();
-            controller.setMariia(bot);
+            controller.setMariia(mariiaChatbot);
             Scene scene = new Scene(ap);
             stage.setScene(scene);
             stage.show();
