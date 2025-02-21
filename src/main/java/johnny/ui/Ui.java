@@ -66,7 +66,7 @@ public class Ui {
         StringBuilder sb = new StringBuilder();
         sb.append("Another task? You sure you can handle this?\n");
         sb.append("Added: ").append(task.toString()).append("\n");
-        sb.append(" That makes ").append(size).append(" tasks. Better get moving.\n");
+        sb.append("That makes ").append(size).append(" tasks. Better get moving.\n");
         return sb.toString();
     }
     /**
@@ -87,8 +87,8 @@ public class Ui {
      */
     public String showUnmarkTask(Task task) {
         StringBuilder sb = new StringBuilder();
-        sb.append(" Changed your mind? Alright.\n");
-        sb.append(" Task is back to incomplete:\n");
+        sb.append("Changed your mind? Alright.\n");
+        sb.append("Task is back to incomplete:\n");
         sb.append("   ").append(task.toString()).append("\n");
         return sb.toString();
     }
@@ -102,7 +102,7 @@ public class Ui {
         StringBuilder sb = new StringBuilder();
         sb.append(" Task scrapped:\n");
         sb.append("   ").append(task.toString()).append("\n");
-        sb.append(" You're down to ").append(size).append(" tasks in the list.\n");
+        sb.append("You're down to ").append(size).append(" tasks in the list.\n");
         return sb.toString();
     }
     /**
@@ -136,7 +136,7 @@ public class Ui {
         StringBuilder sb = new StringBuilder();
         sb.append("Here’s what I found:\n");
         if (tasks.isEmpty()) {
-            sb.append(" No matches. Guess you're searching for ghosts.\n");
+            sb.append("No matches. Guess you're searching for ghosts.\n");
         } else {
             for (int i = 0; i < tasks.size(); i++) {
                 sb.append((i + 1)).append(".").append(tasks.get(i).toString()).append("\n");
