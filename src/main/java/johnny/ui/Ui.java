@@ -112,7 +112,7 @@ public class Ui {
      */
     public String showError(String message) {
         StringBuilder sb = new StringBuilder();
-        sb.append("Something went wrong: ").append(message).append("\n");
+        sb.append(message).append("\n");
         return sb.toString();
     }
 
