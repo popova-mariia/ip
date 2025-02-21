@@ -1,5 +1,6 @@
 package johnny.parser;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
 
 import johnny.command.ByeCommand;
@@ -91,10 +92,14 @@ public class Parser {
         }
         if (!parts[1].matches("\\d{4}-\\d{2}-\\d{2}")) {
             return new InvalidCommand("Invalid date format. Please use yyyy-MM-dd.");
-        } else {
+        }
+        try {
             LocalDate by = LocalDate.parse(parts[1]);
             Deadline deadline = new Deadline(parts[0], by);
             return new DeadlineCommand(deadline);
+        }
+        catch (DateTimeException e) {
+            return new InvalidCommand("Invalid date format. Please use yyyy-MM-dd.");
         }
     }
     /**
@@ -110,9 +115,20 @@ public class Parser {
             return new InvalidCommand("The description of an event cannot be empty, "
                     + "and it must include '/from' and '/to' parts.");
         }
-        LocalDate from = LocalDate.parse(parts[1].trim());
-        LocalDate to = LocalDate.parse(parts[2].trim());
-        Event event = new Event(parts[0].trim(), from, to);
-        return new EventCommand(event);
+        if (!parts[1].matches("\\d{4}-\\d{2}-\\d{2}") || !parts[2].matches("\\d{4}-\\d{2}-\\d{2}")) {
+            return new InvalidCommand("Invalid date format. Please use yyyy-MM-dd.");
+        }
+        try {
+            LocalDate from = LocalDate.parse(parts[1].trim());
+            LocalDate to = LocalDate.parse(parts[2].trim());
+            if (from.isAfter(to)) {
+                return new InvalidCommand("Start date is after end date, doesnt make much sense.");
+            }
+            Event event = new Event(parts[0].trim(), from, to);
+            return new EventCommand(event);
+        }
+        catch (DateTimeException e) {
+            return new InvalidCommand("Invalid date format. Please use yyyy-MM-dd.");
+        }
     }
 }
