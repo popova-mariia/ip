@@ -2,3 +2,4 @@ event go shopping /from 2025-01-01 /to 2025-01-02 /done N
 todo clean the floor /done N
 deadline submit cs2107 quiz /by 2025-03-01 /done N
 event see dentist /from 2025-02-21 /to 2025-02-21 /done N
+todo event /done N
