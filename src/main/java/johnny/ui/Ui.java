@@ -81,9 +81,10 @@ public class Ui {
         return sb.toString();
     }
     /**
-     * The task that is to be marked as not done.
+     * Returns a message indicating that the specified task has been marked as incomplete.
      *
      * @param task The task that was unmarked.
+     * @return A formatted string confirming the task is now incomplete.
      */
     public String showUnmarkTask(Task task) {
         StringBuilder sb = new StringBuilder();
@@ -117,7 +118,7 @@ public class Ui {
     }
 
     /**
-     * Shows an error message when there is an problem loading tasks from storage.
+     * Shows an error message when there is a problem loading tasks from storage.
      */
     public String showLoadingError() {
         StringBuilder sb = new StringBuilder();
