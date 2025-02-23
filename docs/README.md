@@ -48,9 +48,9 @@ Johnny Says:
 ```
 
 ### **4. Testing Johnny**
-To run automated tests, navigate to the text-ui-test directory and run:
+To run automated tests, navigate to ip directory and run:
 ```angular2html
-bash runtest.sh
+./gradlew test
 ```
 It will output whether build is successful or failed depending on the result of the tests.
 
