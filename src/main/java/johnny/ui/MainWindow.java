@@ -38,9 +38,6 @@ public class MainWindow extends AnchorPane {
     @FXML
     public void initialize() {
         dialogContainer.setStyle("-fx-background-color: #efe901;");
-        //        scrollPane.setStyle("-fx-background: transparent;");
-        //        dialogContainer.setStyle("-fx-background: transparent;");
-        //        this.setStyle("-fx-background-image: url('/images/background.png'); -fx-background-size: cover;");
 
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
         System.out.println("johnny.ui.MainWindow initialize() called!");
@@ -51,7 +48,6 @@ public class MainWindow extends AnchorPane {
         assert johnny != null : "Bot instance cannot be null";
         this.johnny = johnny;
         String welcomeMessage = johnny.welcomeUser();
-        //dialogContainer.setStyle("-fx-background-image: url('/images/background.jpg'); -fx-background-size: cover;");
         dialogContainer.getChildren().add(
                 DialogBox.getBotDialog(welcomeMessage, botImage)
         );

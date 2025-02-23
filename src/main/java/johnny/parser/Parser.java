@@ -42,20 +42,13 @@ public class Parser {
         } else if (input.startsWith("event")) {
             return parseEventCommand(input);
         } else if (input.startsWith("mark ")) {
-            int index = Integer.parseInt(input.split(" ")[1]);
-            return new MarkCommand(index);
+            return parseMarkCommand(input);
         } else if (input.startsWith("unmark ")) {
-            int index = Integer.parseInt(input.split(" ")[1]);
-            return new UnmarkCommand(index);
+            return parseUnmarkCommand(input);
         } else if (input.startsWith("delete")) {
-            int index = Integer.parseInt(input.split(" ")[1]);
-            return new DeleteCommand(index);
+            return parseDeleteCommand(input);
         } else if (input.startsWith("find")) {
-            String keyword = input.length() > 5 ? input.substring(5).trim() : "";
-            if (keyword.isEmpty()) {
-                return new InvalidCommand("Dk what to search for, try again.");
-            }
-            return new FindCommand(keyword);
+            return parseFindCommand(input);
         } else if (input.startsWith("undo")) {
             return new UndoCommand();
         } else {
@@ -130,5 +123,48 @@ public class Parser {
         catch (DateTimeException e) {
             return new InvalidCommand("Invalid date format. Please use yyyy-MM-dd.");
         }
+    }
+    /**
+     * Parses input to produce a mark command.
+     *
+     * @param input A String typed by the user.
+     * @return A mark command.
+     */
+    public static Command parseMarkCommand(String input) {
+        int index = Integer.parseInt(input.split(" ")[1]);
+        return new MarkCommand(index);
+    }
+    /**
+     * Parses input to produce an unmark command.
+     *
+     * @param input A String typed by the user.
+     * @return An unmark command.
+     */
+    public static Command parseUnmarkCommand(String input) {
+        int index = Integer.parseInt(input.split(" ")[1]);
+        return new UnmarkCommand(index);
+    }
+    /**
+     * Parses input to produce a delete command.
+     *
+     * @param input A String typed by the user.
+     * @return A delete command.
+     */
+    public static Command parseDeleteCommand(String input) {
+        int index = Integer.parseInt(input.split(" ")[1]);
+        return new DeleteCommand(index);
+    }
+    /**
+     * Parses input to produce a find command or invalid command.
+     *
+     * @param input A String typed by the user.
+     * @return A find command or invalid command.
+     */
+    public static Command parseFindCommand(String input) {
+        String keyword = input.length() > 5 ? input.substring(5).trim() : "";
+        if (keyword.isEmpty()) {
+            return new InvalidCommand("Dk what to search for, try again.");
+        }
+        return new FindCommand(keyword);
     }
 }

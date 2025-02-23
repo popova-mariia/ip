@@ -21,66 +21,91 @@ import johnny.task.ToDo;
  */
 public class HardDisk {
     private String filePath;
-
+    /**
+     * Constructs a HardDisk object with the specified file path.
+     * This file path is used to load and save tasks to disk.
+     *
+     * @param filePath The path to the file where tasks will be stored.
+     * @throws AssertionError If the provided file path is null.
+     */
     public HardDisk(String filePath) {
         assert filePath != null : "File path cannot be null";
         this.filePath = filePath;
     }
     /**
-     * Parses the task from hard disk (string format) into a Task format.
+     * Parses the task from a string read from the hard disk into a Task object.
      *
      * @param str String input from the hard disk.
-     * @return A task which was represented by a string in the file.
-     * @throws EmptyDescriptionException If some part of the command (ie description, by, from and to) is absent.
+     * @return A task represented by a string in the file.
      */
     public Task parseTask(String str) {
         try {
             if (str.startsWith("todo")) {
-                String[] parts = str.length() > 5 ? str.substring(5).split(" /done ") : new String[0];
-                if (parts.length < 2 || parts[0].trim().isEmpty()) {
-                    throw new EmptyDescriptionException("The description of a todo cannot be empty.");
-                }
-                ToDo todo = new ToDo(parts[0]);
-                if (parts[1].trim().equals("X")) {
-                    todo.markAsDone();
-                } else {
-                    todo.markAsNotDone();
-                }
-                return todo;
+                return parseTodoTask(str);
             } else if (str.startsWith("deadline")) {
-                String[] parts = str.length() > 9 ? str.substring(9).split(" /by | /done ") : new String[0];
-                System.out.println(parts);
-                if (parts.length < 2 || parts[0].trim().isEmpty()) {
-                    throw new EmptyDescriptionException("The description of a deadline cannot be empty.");
-                }
-                LocalDate by = LocalDate.parse(parts[1].trim());
-                Deadline deadline = new Deadline(parts[0], by);
-                if (parts[2].trim().equals("X")) {
-                    deadline.markAsDone();
-                } else {
-                    deadline.markAsNotDone();
-                }
-                return deadline;
+                return parseDeadlineTask(str);
             } else if (str.startsWith("event")) {
-                String[] parts = str.length() > 6 ? str.substring(6).split(" /from | /to | /done ") : new String[0];
-                if (parts.length < 4 || parts[0].trim().isEmpty()) {
-                    throw new EmptyDescriptionException("The description of an event cannot be empty, and it must "
-                            + "include '/from' and '/to' and '/done' parts.");
-                }
-                LocalDate from = LocalDate.parse(parts[1].trim());
-                LocalDate to = LocalDate.parse(parts[2].trim());
-                Event event = new Event(parts[0].trim(), from, to);
-                if (parts[3].trim().equals("X")) {
-                    event.markAsDone();
-                } else {
-                    event.markAsNotDone();
-                }
-                return event;
+                return parseEventTask(str);
             }
         } catch (EmptyDescriptionException e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
         return null;
+    }
+
+    /**
+     * Parses a ToDo task from a string format.
+     */
+    private Task parseTodoTask(String str) throws EmptyDescriptionException {
+        String[] parts = str.length() > 5 ? str.substring(5).split(" /done ") : new String[0];
+        if (parts.length < 2 || parts[0].trim().isEmpty()) {
+            throw new EmptyDescriptionException("The description of a todo cannot be empty.");
+        }
+        ToDo todo = new ToDo(parts[0]);
+        if (parts[1].trim().equals("X")) {
+            todo.markAsDone();
+        } else {
+            todo.markAsNotDone();
+        }
+        return todo;
+    }
+
+    /**
+     * Parses a Deadline task from a string format.
+     */
+    private Task parseDeadlineTask(String str) throws EmptyDescriptionException {
+        String[] parts = str.length() > 9 ? str.substring(9).split(" /by | /done ") : new String[0];
+        if (parts.length < 3 || parts[0].trim().isEmpty()) {
+            throw new EmptyDescriptionException("The description of a deadline cannot be empty.");
+        }
+        LocalDate by = LocalDate.parse(parts[1].trim());
+        Deadline deadline = new Deadline(parts[0], by);
+        if (parts[2].trim().equals("X")) {
+            deadline.markAsDone();
+        } else {
+            deadline.markAsNotDone();
+        }
+        return deadline;
+    }
+
+    /**
+     * Parses an Event task from a string format.
+     */
+    private Task parseEventTask(String str) throws EmptyDescriptionException {
+        String[] parts = str.length() > 6 ? str.substring(6).split(" /from | /to | /done ") : new String[0];
+        if (parts.length < 4 || parts[0].trim().isEmpty()) {
+            throw new EmptyDescriptionException("The description of an event cannot be empty, and it must "
+                    + "include '/from', '/to', and '/done' parts.");
+        }
+        LocalDate from = LocalDate.parse(parts[1].trim());
+        LocalDate to = LocalDate.parse(parts[2].trim());
+        Event event = new Event(parts[0].trim(), from, to);
+        if (parts[3].trim().equals("X")) {
+            event.markAsDone();
+        } else {
+            event.markAsNotDone();
+        }
+        return event;
     }
     /**
      * Converts a task format into a string format which can then be saved to hard disk.

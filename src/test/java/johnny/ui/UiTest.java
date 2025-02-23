@@ -59,7 +59,7 @@ public class UiTest {
     public void testShowAddTask() {
         Task task = new ToDo("read book");
         String expected = "Another task? You sure you can handle this?\n"
-                + "Added: [T][ ] read book\n That makes 1 tasks. Better get moving.\n";
+                + "Added: [T][ ] read book\nThat makes 1 tasks. Better get moving.\n";
         assertEquals(expected, ui.showAddTask(task, 1));
     }
 
@@ -75,21 +75,24 @@ public class UiTest {
     public void testShowUnmarkTask() {
         Task task = new ToDo("read book");
         task.markAsNotDone();
-        String expected = " Changed your mind? Alright.\n Task is back to incomplete:\n   [T][ ] read book\n";
+        String expected = "Changed your mind? Alright.\n"
+                + "Task is back to incomplete:\n   [T][ ] read book\n";
         assertEquals(expected, ui.showUnmarkTask(task));
     }
 
     @Test
     public void testShowDeleteTask() {
         Task task = new ToDo("read book");
-        String expected = " Task scrapped:\n   [T][ ] read book\n You're down to 0 tasks in the list.\n";
+        String expected = " Task scrapped:\n   [T][ ] read book\n"
+                + "You're down to 0 tasks in the list.\n";
         assertEquals(expected, ui.showDeleteTask(task, 0));
     }
 
     @Test
     public void testShowFindResults_noMatches() {
         List<Task> emptyList = new ArrayList<>();
-        String expected = "Here’s what I found:\n No matches. Guess you're searching for ghosts.\n";
+        String expected = "Here’s what I found:\n"
+                + "No matches. Guess you're searching for ghosts.\n";
         assertEquals(expected, ui.showFindResults(emptyList));
     }
 
