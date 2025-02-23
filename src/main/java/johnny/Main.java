@@ -19,10 +19,8 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         try {
-            System.out.println("Current working directory: " + System.getProperty("user.dir"));
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/MainWindow.fxml"));
             assert fxmlLoader != null : "FXMLLoader failed to initialize";
-
             AnchorPane ap = fxmlLoader.load();
             MainWindow controller = fxmlLoader.getController();
             controller.setJohnny(johnny);
