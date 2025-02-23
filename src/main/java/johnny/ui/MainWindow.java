@@ -7,6 +7,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.*;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import johnny.Johnny;
@@ -38,7 +39,6 @@ public class MainWindow extends AnchorPane {
     @FXML
     public void initialize() {
         dialogContainer.setStyle("-fx-background-color: #efe901;");
-
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
         System.out.println("johnny.ui.MainWindow initialize() called!");
     }
