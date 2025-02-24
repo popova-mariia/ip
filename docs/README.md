@@ -26,18 +26,65 @@ java -jar Johnny.jar
 You’ll be greeted by Johnny, ready to take commands.
 
 ### **3. Commands**
-Command | Description            |Example
-|----------|------------------------|----------|
-todo <task>| Adds a ToDo task       |todo read book 
-deadline <task> /by YYYY-MM-DD| Adds a task with a deadline |deadline submit cs2107 quiz /by 2025-03-01
-event <task> /from <date> /to <date>| Adds an event with a time range |event attend a party /from 2025-03-03 /to 2025-03-04
-list| Lists all tasks        |list
-mark <task number>| Marks a task as done   |mark 2
-unmark <task number>|Marks a task as not done|unmark 2
-delete <task number>|	Deletes a task|delete 1
-find <keyword>|Finds tasks containing the keyword|find party
-undo|	Undoes the last command|undo
-bye|Exits Johnny|bye
+
+<table>
+  <tr>
+    <th>Command</th>
+    <th>Description</th>
+    <th>Example</th>
+  </tr>
+  <tr>
+    <td>todo</td>
+    <td>Adds a ToDo task</td>
+    <td>todo read book</td>
+  </tr>
+  <tr>
+    <td>deadline</td>
+    <td>Adds a task with a deadline</td>
+    <td>deadline submit cs2107 quiz /by 2025-03-01</td>
+  </tr>
+  <tr>
+    <td>event</td>
+    <td>Adds an event with a time range</td>
+    <td>event attend a party /from 2025-03-03 /to 2025-03-04</td>
+  </tr>
+  <tr>
+    <td>list</td>
+    <td>Lists all the tasks</td>
+    <td>list</td>
+  </tr>
+  <tr>
+      <td>mark</td>
+      <td>Marks a task as done</td>
+      <td>mark 2</td>
+    </tr>
+  <tr>
+    <td>unmark</td>
+    <td>Marks a task as not done</td>
+    <td>unmark 2</td>
+  </tr>
+  <tr>
+    <td>delete</td>
+    <td>Deletes a task</td>
+    <td>delete 1</td>
+  </tr>
+  <tr>
+    <td>find</td>
+    <td>Finds tasks containing the keyword</td>
+    <td>find party</td>
+  </tr>
+  <tr>
+    <td>undo</td>
+    <td>Undoes the last command</td>
+    <td>undo</td>
+  </tr>
+  <tr>
+    <td>bye</td>
+    <td>Exits Johnny</td>
+    <td>bye</td>
+  </tr>
+</table>
+
 
 ### **3. Error handling**
 Johnny throws shade if you mess up. Here are some common mistakes and their responses:
