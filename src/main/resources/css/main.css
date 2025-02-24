@@ -1,44 +1,46 @@
-/*.root {*/
-/*    main-color: #efe901;*/
-/*    -fx-background-color: main-color;*/
-/*    -fx-background-image: url("../images/background.jpg");*/
-/*    -fx-background-size: cover;*/
-/*}*/
+.root {
+    main-color: #788da5;
+    -fx-background-color: main-color;
+    -fx-background-image: url("../images/background.jpg");
+    -fx-background-size: cover;
+}
+.text-field {
+    -fx-border-color: #384655;
+}
 
 
-/*.button {*/
-/*    -fx-background-color: cornflowerBlue;*/
-/*    -fx-font: bold 16px "Verdana";*/
-/*}*/
+.button {
+    -fx-background-color: #788da5;
+    -fx-font: bold 16px "Verdana";
+}
 
-/*.button:hover {*/
-/*    -fx-background-color:royalBlue;*/
-/*    -fx-font-size: 18px;*/
-/*}*/
+.button:hover {
+    -fx-background-color:#47586b;
+    -fx-font-size: 18px;
+}
 
-/*.button:pressed {*/
-/*    -fx-background-color:lightSkyBlue;*/
-/*    -fx-font-size: 20px;*/
-/*}*/
+.button:pressed {
+    -fx-background-color:#a2b1c2;
+    -fx-font-size: 16px;
+}
 
-/*.scroll-pane,*/
-/*.scroll-pane .viewport {*/
-/*    -fx-background-color: transparent;*/
-/*}*/
+.scroll-pane,
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
 
-/*.scroll-bar {*/
-/*    -fx-font-size: 10px;  !* Change width of scroll bar. *!*/
-/*    -fx-background-color: main-color;*/
-/*}*/
+.scroll-bar {
+    -fx-font-size: 10px;
+    -fx-background-color: main-color;
+}
 
-/*.scroll-bar .thumb {*/
-/*    -fx-background-color: main-color;*/
-/*    -fx-background-radius: 1em;*/
-/*}*/
+.scroll-bar .thumb {
+    -fx-background-color: main-color;
+    -fx-background-radius: 1em;
+}
 
-/*!* Hides the increment and decrement buttons. *!*/
-/*.scroll-bar .increment-button,*/
-/*.scroll-bar .decrement-button {*/
-/*    -fx-pref-height: 0;*/
-/*    -fx-opacity: 0;*/
-/*}*/
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-pref-height: 0;
+    -fx-opacity: 0;
+}
