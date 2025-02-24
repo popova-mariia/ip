@@ -1,5 +1,7 @@
 # Johnny - Task Management Chatbot
 
+![Ui.png](Ui.png)
+
 Johnny is a command-line chatbot that helps you manage tasks efficiently. Inspired by **Cyberpunk 2077's Johnny Silverhand**, this chatbot ensures that you stay on top of your schedule while keeping interactions entertaining.
 
 Johnny supports 3 different types of tasks:
