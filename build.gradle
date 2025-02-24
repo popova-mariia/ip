@@ -51,11 +51,11 @@ checkstyle {
 }
 
 application {
-    mainClass.set("mariiachatbot.Launcher")
+    mainClass.set("johnny.Launcher")
 }
 
 shadowJar {
-    archiveBaseName = "mariiachatbot"
+    archiveBaseName = "johnny"
     archiveClassifier = null
 }
 

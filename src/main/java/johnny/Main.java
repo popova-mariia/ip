@@ -1,5 +1,4 @@
 package johnny;
-
 import java.io.IOException;
 
 import javafx.application.Application;
