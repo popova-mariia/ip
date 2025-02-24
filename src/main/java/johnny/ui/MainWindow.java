@@ -38,7 +38,6 @@ public class MainWindow extends AnchorPane {
      */
     @FXML
     public void initialize() {
-        //dialogContainer.setStyle("-fx-background-color: #efe901;");
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
     }
 
