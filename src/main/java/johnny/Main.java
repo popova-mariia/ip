@@ -13,12 +13,11 @@ import johnny.ui.MainWindow;
  */
 public class Main extends Application {
 
-    private Johnny johnny = new Johnny("./src/main/java/data/tasks.txt");
+    private Johnny johnny = new Johnny("ldata/tasks.txt");
 
     @Override
     public void start(Stage stage) {
         try {
-            System.out.println("Current working directory: " + System.getProperty("user.dir"));
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/MainWindow.fxml"));
             assert fxmlLoader != null : "FXMLLoader failed to initialize";
 

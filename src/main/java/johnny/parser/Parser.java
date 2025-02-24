@@ -90,8 +90,7 @@ public class Parser {
             LocalDate by = LocalDate.parse(parts[1]);
             Deadline deadline = new Deadline(parts[0], by);
             return new DeadlineCommand(deadline);
-        }
-        catch (DateTimeException e) {
+        } catch (DateTimeException e) {
             return new InvalidCommand("Invalid date format. Please use yyyy-MM-dd.");
         }
     }

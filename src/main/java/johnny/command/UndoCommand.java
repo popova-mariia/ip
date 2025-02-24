@@ -15,7 +15,7 @@ import johnny.ui.Ui;
  * The UndoCommand class undoes the most recent modifying command.
  */
 public class UndoCommand extends Command {
-    private static final String LATEST_CHANGES_FILE = "./src/main/java/data/latest-changes.txt";
+    private static final String LATEST_CHANGES_FILE = "data/latest-changes.txt";
 
     @Override
     public String execute(TaskList tasks, Ui ui, HardDisk hardDisk) {

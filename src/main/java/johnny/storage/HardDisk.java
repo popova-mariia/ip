@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -145,16 +147,16 @@ public class HardDisk {
         File file = new File(filePath);
         if (!file.exists()) {
             try {
+                Files.createDirectories(Path.of(file.getParent()));
                 file.createNewFile();
             } catch (IOException e) {
-                System.out.println("Error creating file: " + e.getMessage());
+                System.out.println("Error creating file: " + filePath);
             }
         }
         try (FileWriter writer = new FileWriter(file)) {
             for (Task task : tasks) {
                 writer.write(convertToFileString(task) + '\n');
             }
-            System.out.println("wrote to file");
             writer.close();
         } catch (IOException e) {
             System.out.println("Error creating a filewriter: " + e.getMessage());
@@ -169,12 +171,9 @@ public class HardDisk {
      */
     public List<Task> loadTasks() {
         List<Task> tasks = new ArrayList<>();
-        System.out.println("loading files");
-        System.out.println("Current working directory: " + System.getProperty("user.dir"));
         File file = new File(filePath);
 
         if (!file.exists()) {
-            System.out.println("No saved tasks found. Starting with an empty list.");
             return tasks;
         }
 
@@ -200,12 +199,18 @@ public class HardDisk {
      * Logs the latest modifying command into latest-changes.txt
      */
     public static void logLatestChange(String change) {
-        try (FileWriter writer = new FileWriter("./src/main/java/data/latest-changes.txt", false)) {
+        String filePath = "data/latest-changes.txt";
+        File file = new File(filePath);
+        File parentDir = file.getParentFile();
+
+        if (parentDir != null && !parentDir.exists()) {
+            parentDir.mkdirs();
+        }
+        try (FileWriter writer = new FileWriter(file, false)) { // false -> overwrite mode
             writer.write(change);
         } catch (IOException e) {
             System.out.println("Error logging latest change: " + e.getMessage());
         }
     }
-
 }
 
